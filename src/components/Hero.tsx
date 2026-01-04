@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, FileText, Receipt } from "lucide-react";
+import { ArrowRight, Bot, FileText } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -18,7 +18,7 @@ const Hero = () => {
           <div className="flex items-center justify-center gap-2 mb-6">
             <div className="flex -space-x-3">
               <div className="w-10 h-10 rounded-full bg-primary/20 border-2 border-background flex items-center justify-center">
-                <Receipt className="w-5 h-5 text-primary" />
+                <Bot className="w-5 h-5 text-primary" />
               </div>
               <div className="w-10 h-10 rounded-full bg-primary/30 border-2 border-background flex items-center justify-center">
                 <FileText className="w-5 h-5 text-primary" />
@@ -31,13 +31,13 @@ const Hero = () => {
 
           {/* Headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
-            Automatisez vos tâches avec{" "}
-            <span className="text-primary">nos agents IA</span>
+            Automatisez vos tâches grâce à{" "}
+            <span className="text-primary">l'IA</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-            Des assistants IA opérationnels qui gèrent les relances de factures et le suivi des devis à votre place. 
+            Des automatisations IA opérationnelles qui gèrent les relances de factures, les devis et l'administratif à votre place. 
             Vous récupérez du temps et améliorez votre trésorerie, sans changer d'outils.
           </p>
 
@@ -49,7 +49,7 @@ const Hero = () => {
               className="h-12 px-6 bg-card border-border rounded-full"
             />
             <Button variant="hero" className="w-full sm:w-auto whitespace-nowrap gap-2">
-              Diagnostic gratuit
+              Devis gratuit
               <ArrowRight className="w-4 h-4" />
             </Button>
           </div>
