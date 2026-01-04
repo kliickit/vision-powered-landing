@@ -1,105 +1,74 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ArrowRight, FileText, Receipt } from "lucide-react";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Network Background Pattern */}
-      <div className="absolute inset-0 overflow-hidden">
-        <svg
-          className="absolute w-full h-full opacity-20"
-          viewBox="0 0 1000 800"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          {/* Network dots and lines */}
-          <defs>
-            <pattern id="dots" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
-              <circle cx="25" cy="25" r="2" fill="currentColor" className="text-muted-foreground" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dots)" />
-          
-          {/* Connecting lines */}
-          <g stroke="currentColor" strokeWidth="0.5" className="text-muted-foreground" opacity="0.5">
-            <line x1="100" y1="200" x2="200" y2="150" />
-            <line x1="200" y1="150" x2="300" y2="180" />
-            <line x1="300" y1="180" x2="400" y2="120" />
-            <line x1="400" y1="120" x2="500" y2="200" />
-            <line x1="500" y1="200" x2="600" y2="160" />
-            <line x1="600" y1="160" x2="700" y2="220" />
-            <line x1="700" y1="220" x2="800" y2="180" />
-            <line x1="800" y1="180" x2="900" y2="240" />
-            
-            <line x1="150" y1="400" x2="250" y2="350" />
-            <line x1="250" y1="350" x2="350" y2="380" />
-            <line x1="350" y1="380" x2="450" y2="320" />
-            <line x1="450" y1="320" x2="550" y2="400" />
-            <line x1="550" y1="400" x2="650" y2="360" />
-            <line x1="650" y1="360" x2="750" y2="420" />
-            <line x1="750" y1="420" x2="850" y2="380" />
-            
-            <line x1="200" y1="600" x2="300" y2="550" />
-            <line x1="300" y1="550" x2="400" y2="580" />
-            <line x1="400" y1="580" x2="500" y2="520" />
-            <line x1="500" y1="520" x2="600" y2="600" />
-            <line x1="600" y1="600" x2="700" y2="560" />
-            <line x1="700" y1="560" x2="800" y2="620" />
-            
-            {/* Cross connections */}
-            <line x1="200" y1="150" x2="250" y2="350" />
-            <line x1="400" y1="120" x2="450" y2="320" />
-            <line x1="600" y1="160" x2="650" y2="360" />
-            <line x1="800" y1="180" x2="750" y2="420" />
-            <line x1="300" y1="550" x2="350" y2="380" />
-            <line x1="500" y1="520" x2="550" y2="400" />
-            <line x1="700" y1="560" x2="650" y2="360" />
-          </g>
-          
-          {/* Larger node points */}
-          <g fill="currentColor" className="text-muted-foreground">
-            <circle cx="100" cy="200" r="4" />
-            <circle cx="200" cy="150" r="3" />
-            <circle cx="300" cy="180" r="5" />
-            <circle cx="400" cy="120" r="3" />
-            <circle cx="500" cy="200" r="4" />
-            <circle cx="600" cy="160" r="3" />
-            <circle cx="700" cy="220" r="5" />
-            <circle cx="800" cy="180" r="3" />
-            <circle cx="900" cy="240" r="4" />
-            
-            <circle cx="150" cy="400" r="3" />
-            <circle cx="250" cy="350" r="4" />
-            <circle cx="350" cy="380" r="3" />
-            <circle cx="450" cy="320" r="5" />
-            <circle cx="550" cy="400" r="4" />
-            <circle cx="650" cy="360" r="3" />
-            <circle cx="750" cy="420" r="4" />
-            <circle cx="850" cy="380" r="3" />
-            
-            <circle cx="200" cy="600" r="4" />
-            <circle cx="300" cy="550" r="3" />
-            <circle cx="400" cy="580" r="4" />
-            <circle cx="500" cy="520" r="5" />
-            <circle cx="600" cy="600" r="3" />
-            <circle cx="700" cy="560" r="4" />
-            <circle cx="800" cy="620" r="3" />
-          </g>
-        </svg>
-      </div>
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10" />
+      
+      {/* Decorative blobs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
-      {/* Content Card */}
-      <div className="relative z-10 container mx-auto px-6">
-        <div className="max-w-4xl mx-auto bg-card rounded-3xl shadow-2xl p-12 md:p-16 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
-            Automate the Future. Today
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Agent avatars */}
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <div className="flex -space-x-3">
+              <div className="w-10 h-10 rounded-full bg-primary/20 border-2 border-background flex items-center justify-center">
+                <Receipt className="w-5 h-5 text-primary" />
+              </div>
+              <div className="w-10 h-10 rounded-full bg-primary/30 border-2 border-background flex items-center justify-center">
+                <FileText className="w-5 h-5 text-primary" />
+              </div>
+            </div>
+            <span className="text-sm text-muted-foreground ml-2">
+              <span className="text-primary font-semibold">2 agents IA</span> travaillent pour vous 24/7
+            </span>
+          </div>
+
+          {/* Headline */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
+            Automatisez vos tâches avec{" "}
+            <span className="text-primary">nos agents IA</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
-            Intelligent solutions for a smarter tomorrow.
-            <br />
-            Get exclusive early access.
+
+          {/* Subtitle */}
+          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+            Des assistants IA opérationnels qui gèrent les relances de factures et le suivi des devis à votre place. 
+            Vous récupérez du temps et améliorez votre trésorerie, sans changer d'outils.
           </p>
-          <Button variant="hero" size="lg">
-            Join Waitlist
-          </Button>
+
+          {/* CTA Form */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-lg mx-auto mb-8">
+            <Input 
+              type="email" 
+              placeholder="Entrez votre email professionnel"
+              className="h-12 px-6 bg-card border-border rounded-full"
+            />
+            <Button variant="hero" className="w-full sm:w-auto whitespace-nowrap gap-2">
+              Diagnostic gratuit
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </div>
+
+          {/* Trust indicators */}
+          <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary" />
+              <span>15 minutes</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-muted-foreground/50" />
+              <span>Sans engagement</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-muted-foreground/50" />
+              <span>Réponse sous 24h</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
