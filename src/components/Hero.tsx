@@ -1,8 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Bot, FileText } from "lucide-react";
+import { useState } from "react";
 
 const Hero = () => {
+  const [email, setEmail] = useState("");
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    scrollToContact();
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background gradient */}
@@ -42,17 +57,19 @@ const Hero = () => {
           </p>
 
           {/* CTA Form */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-lg mx-auto mb-8">
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-lg mx-auto mb-8">
             <Input 
               type="email" 
               placeholder="Entrez votre email professionnel"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="h-12 px-6 bg-card border-border rounded-full"
             />
-            <Button variant="hero" className="w-full sm:w-auto whitespace-nowrap gap-2">
+            <Button type="submit" variant="hero" className="w-full sm:w-auto whitespace-nowrap gap-2">
               Devis gratuit
               <ArrowRight className="w-4 h-4" />
             </Button>
-          </div>
+          </form>
 
           {/* Trust indicators */}
           <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">

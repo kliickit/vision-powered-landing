@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,11 +14,29 @@ const Contact = () => {
     company: "",
     message: ""
   });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Demande envoyée ! Nous vous recontacterons sous 24h.");
-    setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+    setIsLoading(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      toast.success("Demande envoyée ! Nous vous recontacterons sous 24h.");
+      setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast.error("Une erreur est survenue. Veuillez réessayer.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -49,6 +68,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   className="h-12 bg-card"
+                  disabled={isLoading}
                 />
               </div>
               <div>
@@ -61,6 +81,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                   className="h-12 bg-card"
+                  disabled={isLoading}
                 />
               </div>
             </div>
@@ -76,6 +97,7 @@ const Contact = () => {
                   value={formData.phone}
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   className="h-12 bg-card"
+                  disabled={isLoading}
                 />
               </div>
               <div>
@@ -87,6 +109,7 @@ const Contact = () => {
                   value={formData.company}
                   onChange={(e) => setFormData({...formData, company: e.target.value})}
                   className="h-12 bg-card"
+                  disabled={isLoading}
                 />
               </div>
             </div>
@@ -102,12 +125,22 @@ const Contact = () => {
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
                 className="bg-card resize-none"
                 placeholder="Que souhaitez-vous automatiser ? Relance de factures, suivi des devis, ou les deux ?"
+                disabled={isLoading}
               />
             </div>
 
-            <Button type="submit" variant="hero" className="w-full gap-2">
-              Envoyer ma demande
-              <ArrowRight className="w-4 h-4" />
+            <Button type="submit" variant="hero" className="w-full gap-2" disabled={isLoading}>
+              {isLoading ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Envoi en cours...
+                </>
+              ) : (
+                <>
+                  Envoyer ma demande
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
             </Button>
           </form>
         </div>
