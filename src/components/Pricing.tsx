@@ -57,7 +57,16 @@ const Pricing = () => {
           <p className="text-muted-foreground text-sm">
             15 minutes • Sans engagement • Analyse personnalisée de vos besoins
           </p>
-          <Button variant="hero" className="mt-4 gap-2">
+          <Button 
+            variant="hero" 
+            className="mt-4 gap-2"
+            onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             Réserver mon diagnostic
             <ArrowRight className="w-4 h-4" />
           </Button>
@@ -98,7 +107,7 @@ const Pricing = () => {
               </div>
 
               {/* Features */}
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-center gap-3 text-foreground/80">
                     <Check className="w-5 h-5 text-primary flex-shrink-0" />
@@ -106,15 +115,6 @@ const Pricing = () => {
                   </li>
                 ))}
               </ul>
-
-              {/* CTA */}
-              <Button 
-                variant={plan.popular ? "hero" : "outline"} 
-                className="w-full gap-2"
-              >
-                Choisir ce pack
-                <ArrowRight className="w-4 h-4" />
-              </Button>
             </div>
           ))}
         </div>

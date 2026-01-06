@@ -90,7 +90,16 @@ const Agents = () => {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <Button variant="hero" className="gap-2">
+          <Button 
+            variant="hero" 
+            className="gap-2"
+            onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             Demander mon diagnostic gratuit
             <ArrowRight className="w-4 h-4" />
           </Button>
