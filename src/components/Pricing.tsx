@@ -1,38 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
 
-const plans = [
-  {
-    name: "Pack Essentiel",
-    description: "Idéal pour tester l'IA sur un premier cas d'usage",
-    setup: "490 € HT",
-    monthly: "79 € HT/mois",
-    agents: "1 assistant",
-    features: [
-      "1 assistant IA au choix",
-      "Mise en place complète",
-      "Formation incluse",
-      "Support par email"
-    ],
-    popular: false
-  },
-  {
-    name: "Pack Business",
-    description: "Le plus vendu — automatisez plusieurs processus",
-    setup: "790 € HT",
-    monthly: "149 € HT/mois",
-    agents: "2 assistants",
-    features: [
-      "2 assistants IA",
-      "Mise en place prioritaire",
-      "Formation équipe incluse",
-      "Support prioritaire",
-      "Tableau de bord analytics"
-    ],
-    popular: true
-  }
-];
-
 const Pricing = () => {
   return (
     <section id="tarifs" className="py-24 bg-muted/30">
@@ -72,57 +40,50 @@ const Pricing = () => {
           </Button>
         </div>
 
-        {/* Plans grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {plans.map((plan, index) => (
-            <div 
-              key={index}
-              className={`relative bg-card rounded-3xl p-8 border ${plan.popular ? 'border-primary shadow-xl shadow-primary/10' : 'border-border'}`}
-            >
-              {/* Popular badge */}
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-sm font-medium px-4 py-1 rounded-full">
-                  Le plus populaire
-                </div>
-              )}
-
-              {/* Plan header */}
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  {plan.name}
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  {plan.description}
-                </p>
-              </div>
-
-              {/* Pricing */}
-              <div className="mb-6">
-                <div className="text-sm text-muted-foreground mb-1">Mise en place</div>
-                <div className="text-3xl font-bold text-foreground mb-2">{plan.setup}</div>
-                <div className="text-muted-foreground">
-                  Puis <span className="text-foreground font-semibold">{plan.monthly}</span>
-                </div>
-                <div className="text-primary font-medium mt-2">{plan.agents}</div>
-              </div>
-
-              {/* Features */}
-              <ul className="space-y-3">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3 text-foreground/80">
-                    <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+        {/* Single plan centered */}
+        <div className="flex justify-center max-w-4xl mx-auto">
+          <div className="relative bg-card rounded-3xl p-8 border border-border max-w-md w-full">
+            {/* Plan header */}
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold text-foreground mb-2">
+                Pack Essentiel
+              </h3>
+              <p className="text-muted-foreground text-sm">
+                Idéal pour tester l'IA sur un premier cas d'usage
+              </p>
             </div>
-          ))}
-        </div>
 
-        {/* Disclaimer */}
-        <p className="text-center text-muted-foreground text-sm mt-8">
-          Tous les prix sont HT. Engagement minimum de 3 mois. Annulation possible avec préavis de 30 jours.
-        </p>
+            {/* Pricing */}
+            <div className="mb-6">
+              <div className="text-sm text-muted-foreground mb-1">Mise en place</div>
+              <div className="text-3xl font-bold text-foreground mb-2">200 € HT</div>
+              <div className="text-muted-foreground">
+                Puis <span className="text-foreground font-semibold">50 € par mois HT</span>
+              </div>
+              <div className="text-primary font-medium mt-2">1 automatisation</div>
+            </div>
+
+            {/* Features */}
+            <ul className="space-y-3">
+              <li className="flex items-center gap-3 text-foreground/80">
+                <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                Relance des devis automatique
+              </li>
+              <li className="flex items-center gap-3 text-foreground/80">
+                <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                Mise en place complète
+              </li>
+              <li className="flex items-center gap-3 text-foreground/80">
+                <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                Formation incluse
+              </li>
+              <li className="flex items-center gap-3 text-foreground/80">
+                <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                Support par email
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );

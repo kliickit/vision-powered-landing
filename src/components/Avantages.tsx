@@ -10,7 +10,7 @@ const avantages = [
   {
     icon: Wallet,
     title: "Récupérez de l'argent",
-    description: "Factures relancées automatiquement, devis envoyés et suivis sans oubli.",
+    description: "Devis envoyés et suivis sans oubli.",
     benefit: "De l'argent qui rentre plus vite."
   },
   {
