@@ -40,7 +40,7 @@ const Hero = () => {
               </div>
             </div>
             <span className="text-sm text-muted-foreground ml-2">
-              <span className="text-primary font-semibold">2 agents IA</span> travaillent pour vous 24/7
+              <span className="text-primary font-semibold">Pilotez votre business</span> depuis votre smartphone
             </span>
           </div>
 
@@ -52,8 +52,8 @@ const Hero = () => {
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-            Des automatisations IA opérationnelles qui gèrent les relances de factures, les devis et l'administratif à votre place. 
-            Vous récupérez du temps et améliorez votre trésorerie, sans changer d'outils.
+            Des automatisations IA opérationnelles qui gèrent les relances de devis. 
+            Vous récupérez du temps.
           </p>
 
           {/* CTA Form */}
